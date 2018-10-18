@@ -22,3 +22,4 @@ cmake --build .
 备注：在win平台下cmake会默认用ms的编译工具，为了避免这个错误，google人员添加了ninja工具，以便能顺利编译。
 所以-DCMAKE_GENERATOR="Ninja"这个选项一定要加上。
 
+示例：https://github.com/NothingIsAll/Toolcode/tree/master/yuvshow
