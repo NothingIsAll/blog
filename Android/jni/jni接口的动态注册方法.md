@@ -1,7 +1,7 @@
 jni接口，静态注册就是签名包名类名一大串的那种，在此只介绍接口动态注册方法
 
 jni接口文件中标准代码块：
-``` c++
+```c++
         #define JAVA_CLASS_NAME "com/audiocn/libs/CamShowGlRender"
         extern "C"{
         	 jstring stringFromJNI(JNIEnv *env, jclass type){
@@ -64,3 +64,18 @@ jni接口文件中标准代码块：
         	}
         }
 ```
+每个jni接口类如果需要动态注册接口都要 在所有接口方法后面添加上这段代码，然后稍作修改
+对`static JNINativeMethod getMethods[] = {`介绍：
+
+  ```
+  typedef struct {
+const char* name;       //接口函数名称
+const char* signature;  //接口函数签名
+void* fnPtr;            //接口函数指针（记得前置转换成void*）
+} JNINativeMethod;
+  ```
+
+  每个jni接口类只需要把类成员函数按照`struct JNINativeMethod[]`的格式添加，就成功的动态注册了jni方法。
+
+  下面再说一下最重要的`接口函数签名`：
+  

@@ -1,24 +1,25 @@
 此类为yuv预览的render类，需要配合ANdroid GLSurfaceView类使用
 
 java类名：
-#define JAVA_CLASS_NAME "com/audiocn/libs/CamShowGlRender"
+`#define JAVA_CLASS_NAME "com/audiocn/libs/CamShowGlRender"`
 
 接口介绍如下：
 1，测试接口，测试native环境是否ok
-public native String stringFromJNI();
+`public native String stringFromJNI();`
 2，GLSurfaceView类使用Renderer的onSurfaceCreated(GL10 gl, EGLConfig config)调用
-public native void onSurfaceCreated();
+  `public native void onSurfaceCreated();`
 3,GLSurfaceView类使用Renderer的 onSurfaceChanged(GL10 gl, int width, int height)调用
-public native void onSurfaceChanged(int width,int heigh);
+`public native void onSurfaceChanged(int width,int heigh);`
 4,GLSurfaceView类使用Renderer的 onDrawFrame(GL10 gl)调用
-public native void onDrawFrame();
+`public native void onDrawFrame();`
 5，放置yuv数据支持nv21的yuv420的格式，每次读取一帧数据。
 其中参数size必须为：width*heigh*3/2
-public static native int PutYuvData(byte[] data,int size,int width,int heigh);
+`public static native int PutYuvData(byte[] data,int size,int width,int heigh);`
 
 
 示例：
 1，Render子类回调调用
+``` c++
 @Override
 public void onSurfaceCreated(GL10 gl, EGLConfig config) {
     onSurfaceCreated();
@@ -65,3 +66,4 @@ class myThread extends Thread{
         }
     }
 }
+```
