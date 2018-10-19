@@ -1,6 +1,9 @@
 此类为yuv预览的render类，需要配合ANdroid GLSurfaceView类使用
-接口介绍如下：
 
+java类名：
+#define JAVA_CLASS_NAME "com/audiocn/libs/CamShowGlRender"
+
+接口介绍如下：
 1，测试接口，测试native环境是否ok
 public native String stringFromJNI();
 2，GLSurfaceView类使用Renderer的onSurfaceCreated(GL10 gl, EGLConfig config)调用
@@ -12,7 +15,6 @@ public native void onDrawFrame();
 5，放置yuv数据支持nv21的yuv420的格式，每次读取一帧数据。
 其中参数size必须为：width*heigh*3/2
 public static native int PutYuvData(byte[] data,int size,int width,int heigh);
-
 
 
 示例：
