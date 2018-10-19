@@ -78,4 +78,13 @@ void* fnPtr;            //接口函数指针（记得前置转换成void*）
   每个jni接口类只需要把类成员函数按照`struct JNINativeMethod[]`的格式添加，就成功的动态注册了jni方法。
 
   下面再说一下最重要的`接口函数签名`：
-  
+  接口函数签名可以依照类型签名对照表来自己组装，估计这么做的始作俑者很少吧，干货来了，
+  同过`javap`工具转换每个java类的class二级制文件，而得到类中每个`native`方法的签名，
+  然后把签名拷贝过来，
+
+  ```
+  cd 到java类编译后的class所在路径下，我的在AS中路径为       （E:\AndroidStudioProjects\Opengltest\app\build\intermediates\classes\debug\entry\com\audiocn\tlkg\opengltest）
+
+  javap -s -private 类名 
+  ```
+  经过
