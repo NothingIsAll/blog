@@ -1,6 +1,7 @@
 jni接口，静态注册就是签名包名类名一大串的那种，在此只介绍接口动态注册方法
 
 jni接口文件中标准代码块：
+·
         #define JAVA_CLASS_NAME "com/audiocn/libs/CamShowGlRender"
         extern "C"{
         	 jstring stringFromJNI(JNIEnv *env, jclass type){
@@ -62,3 +63,4 @@ jni接口文件中标准代码块：
         	    return JNI_VERSION_1_6;
         	}
         }
+·
