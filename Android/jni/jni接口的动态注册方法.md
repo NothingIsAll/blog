@@ -85,6 +85,44 @@ void* fnPtr;            //接口函数指针（记得前置转换成void*）
   ```
   cd 到java类编译后的class所在路径下，我的在AS中路径为       （E:\AndroidStudioProjects\Opengltest\app\build\intermediates\classes\debug\entry\com\audiocn\tlkg\opengltest）
 
-  javap -s -private 类名 
+  javap -s -private 类名
   ```
-  经过
+  `-s`：显示函数签名
+  `-private`：显示函数的最低权限为private，默认只显示public
+
+  可以得到结果：
+  ```
+  public class entry.com.audiocn.tlkg.opengltest.demoglRender implements android.opengl.GLSurfaceView$Renderer {
+  public entry.com.audiocn.tlkg.opengltest.demoglRender();
+    descriptor: ()V
+
+  public void onSurfaceCreated(javax.microedition.khronos.opengles.GL10, javax.microedition.khronos.egl.EGLConfig);
+    descriptor: (Ljavax/microedition/khronos/opengles/GL10;Ljavax/microedition/khronos/egl/EGLConfig;)V
+
+  public void onSurfaceChanged(javax.microedition.khronos.opengles.GL10, int, int);
+    descriptor: (Ljavax/microedition/khronos/opengles/GL10;II)V
+
+  public void onDrawFrame(javax.microedition.khronos.opengles.GL10);
+    descriptor: (Ljavax/microedition/khronos/opengles/GL10;)V
+
+  private native java.lang.String stringFromJNI();
+    descriptor: ()Ljava/lang/String;
+
+  public native void onSurfaceCreated();
+    descriptor: ()V
+
+  public native void onSurfaceChanged(int, int);
+    descriptor: (II)V
+
+  public native void onDrawFrame();
+    descriptor: ()V
+
+  public static native int PutYuvData(byte[], int, int, int);
+    descriptor: ([BIII)I
+
+  static {};
+    descriptor: ()V
+}
+  ```
+####ps:注意在复制签名(descriptor)时，对象类型可能后面有 `;` 如` ()Ljava/lang/String;`  +
+使用时千万不要删掉`;`！！！
